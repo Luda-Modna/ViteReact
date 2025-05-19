@@ -1,7 +1,7 @@
-import Counter from "./Counter/index";
+import ViewPortParams from "./components/ViewPortParams";
 
 function App() {
-  return <Counter />;
+  return <ViewPortParams />;
 }
 
 export default App;
