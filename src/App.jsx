@@ -1,5 +1,5 @@
 import { Component } from "react";
-import StopWatch from "./StopWatch";
+import AnimalSlider from "./components/AnimalSlider";
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
         <button onClick={this.handleClick}>
           {isVisible ? "Unmount" : "Mount"}
         </button>
-        {isVisible && <StopWatch />}
+        {isVisible && <AnimalSlider />}
       </>
     );
   }
