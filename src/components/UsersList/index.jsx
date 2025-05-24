@@ -1,4 +1,5 @@
 import { Component } from "react";
+import UserListItem from "./UserListItem";
 
 const usersData = [
   { id: 1, firstName: "Test", lastName: "Testovych" },
@@ -29,15 +30,15 @@ export default class UsersList extends Component {
     this.setState({ users: newUsers });
   };
 
-  mapUser = (u, i) => {
-    const inlineStyles = {
-      backgroundColor: u.isSelected ? "yellow" : "transparent",
-    };
-
+  mapUser = (u) => {
+    const { isLight } = this.props;
     return (
-      <li key={u.id} style={inlineStyles} onClick={() => this.selectUser(u.id)}>
-        {u.firstName} {u.lastName}
-      </li>
+      <UserListItem
+        key={u.id}
+        user={u}
+        selectUser={this.selectUser}
+        isLight={isLight}
+      />
     );
   };
 
