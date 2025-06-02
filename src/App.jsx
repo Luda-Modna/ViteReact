@@ -1,7 +1,7 @@
-import LoginForm from "./components/LoginForm";
+import SingUpForm from "./components/SingUpForm";
 
 function App() {
-  return <LoginForm />;
+  return <SingUpForm />;
 }
 
 export default App;
