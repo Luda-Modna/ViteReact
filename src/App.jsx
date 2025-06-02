@@ -1,14 +1,7 @@
-import { Component } from "react";
-import UsersList from "./components/UserListTask";
+import LoginForm from "./components/LoginForm";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <UsersList/>;
-  }
+function App() {
+  return <LoginForm />;
 }
 
 export default App;

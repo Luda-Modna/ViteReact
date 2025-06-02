@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+}
+
+.formContainer {
+  padding: 20px;
+  box-shadow: 0 0 5px grey;
+  margin: 10px auto;
+  max-width: 800px;
+  width: 100%;
+  min-width: 320px;
+}
+
+.formHeader {
+  padding: 10px;
+  text-align: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  padding: 10px;
+  outline: none;
+}
+
+.inputValid {
+  border: 2px solid green;
+}
+.inputInvalid {
+  border: 2px solid red;
+}
