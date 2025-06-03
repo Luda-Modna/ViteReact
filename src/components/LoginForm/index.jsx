@@ -41,7 +41,7 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    const { email, password, isEmailValid , isPasswordValid} = this.state;
+    const { email, password, isEmailValid, isPasswordValid } = this.state;
 
     // const emailClassName = `${styles.input} ${
     //   isEmailValid ? styles.inputValid : styles.inputInvalid
