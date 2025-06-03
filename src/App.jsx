@@ -1,7 +1,7 @@
-import SingUpForm from "./components/SingUpForm";
+import UserLoader from "./components/UserLoader";
 
 function App() {
-  return <SingUpForm />;
+  return <UserLoader />;
 }
 
 export default App;
