@@ -1,6 +1,6 @@
 import { Component } from "react";
 import defaultImg from "./defaultImg.jpg";
-import styles from "./AnimalSlider.module.css";
+import styles from "./AnimalSlider.module.scss";
 
 export default class AnimalSlider extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class AnimalSlider extends Component {
   render() {
     const { imgSrc, caption } = this.state;
     return (
-      <figure className={styles.sliderWrapper}>
+      <figure className={styles.sliderContainer}>
         <img src={imgSrc} alt="dog" />
         <figcaption>{caption}</figcaption>
       </figure>
