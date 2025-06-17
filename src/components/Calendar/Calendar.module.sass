@@ -1,0 +1,89 @@
+@import './../../common/style/_calendarVars.sass'
+
+.calendarContainer
+ @include flexContainer($ai:stretch, $fd:row)
+ max-width: 100%
+ overflow-x: hidden
+ max-width: 500px
+ width: 100%
+ height: 300px
+ background-color: $main-accent-color
+ overflow: hidden
+ font-family: sans-serif
+ box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2)
+ margin: $margin-size
+
+.currentDate
+ @include flexContainer(center, center, column)
+ text-align: $text-alight-position
+ color: white
+ width: 40%
+ text-transform: $text-transform
+
+.weekday
+ font-size: 18px
+ margin-bottom: $margin-size
+
+.day
+ font-size: 70px
+ line-height: 1
+
+.tableContainer
+ background-color: white
+ width: 60%
+ padding: 20px
+
+.caption
+ text-align: $text-alight-position
+ font-weight: 600
+ color: $main-accent-color
+ margin-bottom: $margin-size
+ text-transform: $text-transform
+
+
+table
+ max-width: 300px
+ width: 100%
+ border-collapse: collapse
+ table-layout: fixed
+ text-align: $text-alight-position
+
+th
+ color: rgb(235 20 85)
+ font-size: $table-font-size
+ font-weight: bold
+ padding-bottom: 5px
+
+td
+ width: $day-cell-size
+ height: $day-cell-size
+ font-size: $table-font-size
+ line-height: 40px
+
+.today
+ border: 2px solid $today-color
+ color: $today-color
+ font-weight: bold
+
+.justDay
+ color: rgb(181 181 181)
+
+@media (max-width: 515px)
+ .calendarContainer
+  width: 85%
+
+@media (max-width:330px) 
+ .calendarContainer
+  @include flexContainer(flex-start,center,column)
+  height: auto
+  padding: 10px
+  gap: 10px
+
+ .currentDate
+  width: 100%
+ 
+ .tableContainer
+  width: 100%
+  max-width: 100%
+  font-size: 12px
+  
