@@ -1,1 +1,1 @@
-export { default as ThemeContext } from "./themeContext.js";
+export { default as WeatherContext } from "./weatherContext.js";
