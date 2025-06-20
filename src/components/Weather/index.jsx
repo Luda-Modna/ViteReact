@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { WeatherContext } from "./../../contexts/index.js";
-import weatherLoad from "./weatherLoad.js";
+import weatherLoad from "../../servises/weatherLoad.js";
 import WEATHER_URL from "./constans.js";
 import WeatherUnit from "./WeatherUnit.jsx";
 import CurrentWeather from "./CurrentWeather.jsx";
+import styles from './Weather.module.sass'
 
 export default class Weather extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      temperature: null,
-      windSpeed: null,
-      windDirection: null,
+      weather: null,
+      units: null,
       isSelectedCelsius: true,
       isSelectKmH: true,
     };
@@ -27,56 +27,83 @@ export default class Weather extends Component {
 
   updateWeatherLoad = () => {
     const url = this.calcUrl();
-    console.log("url:", url);
-    // weatherLoad(url).then(({ weather, units }) => {
-    //   this.setState({ weather, units });
-    // });
-    const isCelsius = this.state.isSelectedCelsius;
-    const weather2 = {
-      temperature: isCelsius ? 24.6 : 76.3,
-      windSpeed: 8.5,
-      windDirection: 306,
-    };
-    const unit2 = {
-      temperatureUnit: isCelsius ? "°C" : "°F",
-      windSpeedUnit: "km/h",
-      windDirectionUnit: "°",
-    };
-
-    this.setState({ weather: weather2, units: unit2 });
+    weatherLoad(url).then(({ weather, units }) => {
+      this.setState({ weather, units });
+    });
   };
 
   componentDidMount() {
-    this.updateWeatherLoad();
+    const storedUnits = window.localStorage.getItem("units");
+
+    if (storedUnits) {
+      const units = JSON.parse(storedUnits);
+
+      const { temperature_unit, wind_speed_unit } = units;
+
+      this.setState(
+        {
+          isSelectedCelsius: temperature_unit === "celsius",
+          isSelectKmH: wind_speed_unit === "kmH",
+        },
+        () => {
+          this.updateWeatherLoad();
+        }
+      );
+    } else {
+      this.updateWeatherLoad();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { isSelectedCelsius, isSelectKmH } = this.state;
+
+    if (
+      prevState.isSelectedCelsius !== isSelectedCelsius ||
+      prevState.isSelectKmH !== isSelectKmH
+    ) {
+      this.updateWeatherLoad();
+
+      const units = {
+        temperature_unit: isSelectedCelsius ? "celsius" : "fahrenheit",
+        wind_speed_unit: isSelectKmH ? "kmH" : "ms",
+      };
+
+      window.localStorage.setItem("units", JSON.stringify(units));
+    }
   }
 
   switchTemperatureUnit = (value) => {
     this.setState({ isSelectedCelsius: value === "celsius" }, () =>
       this.updateWeatherLoad()
     );
-    console.log(value);
+  };
+
+  switchWindSpeedUnit = (value) => {
+    this.setState({ isSelectKmH: value === "kmH" }, () =>
+      this.updateWeatherLoad()
+    );
   };
 
   render() {
-    const { weather, units } = this.state;
+    const { weather, units, isSelectedCelsius, isSelectKmH } = this.state;
 
     if (!weather || !units) {
       return <p>Loading...</p>;
     }
 
-    // const { temperature, windSpeed, windDirection } = weather;
-    // const { temperatureUnit, windSpeedUnit, windDirectionUnit } = units;
-
     const contextValue = {
       onTemperatureUnitChange: this.switchTemperatureUnit,
-      isSelectedCelsius: this.state.isSelectedCelsius,
+      onWindSpeedUnitChange: this.switchWindSpeedUnit,
+      isSelectedCelsius: isSelectedCelsius,
+      isSelectKmH: isSelectKmH,
     };
-    console.log(this.state.isSelectedCelsius);
 
     return (
       <WeatherContext.Provider value={contextValue}>
-        <WeatherUnit />
-        <CurrentWeather weather={weather} units={units} />
+        <main className={styles.mainContainer}>
+          <WeatherUnit />
+          <CurrentWeather weather={weather} units={units} />
+        </main>
       </WeatherContext.Provider>
     );
   }

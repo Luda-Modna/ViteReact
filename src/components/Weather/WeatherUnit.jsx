@@ -4,11 +4,10 @@ import TemperatureUnit from "./TemperatureUnit.jsx";
 
 function WeatherUnit() {
   return (
-    <>
-      {" "}
+    <article>
       <WindUnit />
       <TemperatureUnit />
-    </>
+    </article>
   );
 }
 

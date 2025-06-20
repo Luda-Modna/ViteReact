@@ -6,18 +6,22 @@ function TemperatureUnit() {
     <WeatherContext.Consumer>
       {(context) => {
         return (
-          <label>
-            Temperature unit:
-            <select
-              value={context.isSelectedCelsius ? "celsius" : "fahrenheit"}
-              onChange={({ target: { value } }) =>
-                context.onTemperatureUnitChange(value)
-              }
-            >
-              <option value="celsius">C</option>
-              <option value="fahrenheit">Fh</option>
-            </select>
-          </label>
+          <>
+            <label>
+              <span>Temperature unit:</span>
+              <div>
+                <select
+                  value={context.isSelectedCelsius ? "celsius" : "fahrenheit"}
+                  onChange={({ target: { value } }) =>
+                    context.onTemperatureUnitChange(value)
+                  }
+                >
+                  <option value="celsius">C</option>
+                  <option value="fahrenheit">Fh</option>
+                </select>
+              </div>
+            </label>
+          </>
         );
       }}
     </WeatherContext.Consumer>

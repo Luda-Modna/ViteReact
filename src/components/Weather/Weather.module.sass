@@ -1,0 +1,49 @@
+@import './../../common/style/_weatherVars'
+    
+.mainContainer
+ @include flexContainer($ai:stretch, $fd:row)
+ background-color: $main-background-color
+ max-width: 600px
+ width: $base-width
+ gap: 10px
+ font-family: sans-serif
+ border-radius: $border-radius
+
+ @media ( max-width: 380px )
+  @include flexContainer($ai:stretch, $fd:column )
+  width: auto
+    
+
+article
+ @include flexContainer($ai:stretch )
+ background-color: $article-background-color
+ padding: $padding-size
+ margin: 10px
+ border-radius: $border-radius
+ width: $base-width
+ 
+
+ select
+  width: $base-width
+  padding: $padding-size
+  margin-top: $select-margin-size
+  margin-bottom: $select-margin-size
+  border-radius: $border-radius
+
+ span
+  padding: 5px
+
+ @media screen and ( max-width: 380px )
+  width: auto
+  
+    
+
+.currentWeatherContainer
+ @include flexContainer(center, center, column )
+ gap: 10px
+
+ h2
+  font-weight: bold
+  text-align: center
+
+  

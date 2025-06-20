@@ -1,7 +1,5 @@
-import WEATHER_URL from "./constans.js";
-
-function weatherLoad() {
-  return fetch(WEATHER_URL)
+function weatherLoad(url) {
+  return fetch(url)
     .then((response) => response.json())
     .then((data) => {
       const weather = data.current_weather;
