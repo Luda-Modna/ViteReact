@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Weather from "./components/Weather";
+import StopWatchH from "./components/StopWatchH";
 
 function App() {
-  return <Weather />;
+  return <StopWatchH />;
 }
 
 export default App;
