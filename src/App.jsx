@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import StopWatchH from "./components/StopWatchH";
+import UserLoader from "./components/UserLoader";
+import UsersLoaderH from "./components/UsersLoaderH";
+import WeatherLoaderH from "./components/Weather/WeatherLoaderH.jsx";
 
 function App() {
-  return <StopWatchH />;
+  return <WeatherLoaderH />;
 }
 
 export default App;

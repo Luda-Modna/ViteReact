@@ -1,30 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { WeatherContext } from "./../../contexts/index";
 
+
 function TemperatureUnit() {
+  const { onTemperatureUnitChange, isSelectedCelsius,UNITS: { CELSIUS, FAHRENHEIT },} =
+    useContext(WeatherContext);
+
   return (
-    <WeatherContext.Consumer>
-      {(context) => {
-        return (
-          <>
-            <label>
-              <span>Temperature unit:</span>
-              <div>
-                <select
-                  value={context.isSelectedCelsius ? "celsius" : "fahrenheit"}
-                  onChange={({ target: { value } }) =>
-                    context.onTemperatureUnitChange(value)
-                  }
-                >
-                  <option value="celsius">C</option>
-                  <option value="fahrenheit">Fh</option>
-                </select>
-              </div>
-            </label>
-          </>
-        );
-      }}
-    </WeatherContext.Consumer>
+    <>
+      <label>
+        <span>Temperature unit:</span>
+        <div>
+          <select
+            value={isSelectedCelsius ? CELSIUS : FAHRENHEIT}
+            onChange={({ target: { value } }) => onTemperatureUnitChange(value)}
+          >
+            <option value={CELSIUS}>C</option>
+            <option value={FAHRENHEIT}>Fh</option>
+          </select>
+        </div>
+      </label>
+    </>
   );
 }
 

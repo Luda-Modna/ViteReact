@@ -1,29 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { WeatherContext } from "./../../contexts/index";
 
-
 function WindUnit() {
+  const {
+    onWindSpeedUnitChange,
+    isSelectKmH,
+    UNITS: { KM_H, MS },
+  } = useContext(WeatherContext);
+
   return (
-    <WeatherContext.Consumer>
-      {(context) => {
-        return (
-          <label>
-            <span>Wind speed unit:</span>
-            <div>
-              <select
-                value={context.isSelectKmH ? "kmH" : "mS"}
-                onChange={({ target: { value } }) =>
-                  context.onWindSpeedUnitChange(value)
-                }
-              >
-                <option value="kmH">km/h</option>
-                <option value="mS">m/s</option>
-              </select>
-            </div>
-          </label>
-        );
-      }}
-    </WeatherContext.Consumer>
+    <label>
+      <span>Wind speed unit:</span>
+      <div>
+        <select
+          value={isSelectKmH ? KM_H : MS}
+          onChange={({ target: { value } }) => onWindSpeedUnitChange(value)}
+        >
+          <option value={KM_H}>km/h</option>
+          <option value={MS}>m/s</option>
+        </select>
+      </div>
+    </label>
   );
 }
 

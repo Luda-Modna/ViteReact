@@ -1,15 +1,7 @@
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
 function TemperatureIcon({ temperature }) {
-  let Icon = FaTemperatureHigh;
-
-  if (temperature > 0) {
-    Icon = FaTemperatureHigh;
-  } else {
-    Icon = FaTemperatureLow;
-  }
-
-  return <Icon />;
+  return temperature > 0 ? <FaTemperatureHigh /> : <FaTemperatureLow />;
 }
 
 export default TemperatureIcon;
