@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { WeatherContext } from "./../../contexts/index.js";
-import weatherLoad from "../../servises/weatherLoad.js";
+import weatherLoad from "../../api/weatherLoad.js";
 import WEATHER_URL from "./constans.js";
 import WeatherUnit from "./WeatherUnit.jsx";
 import CurrentWeather from "./CurrentWeather.jsx";
-import styles from './Weather.module.sass'
+import styles from "./Weather.module.sass";
 
 export default class Weather extends Component {
   constructor(props) {
@@ -73,15 +73,11 @@ export default class Weather extends Component {
   }
 
   switchTemperatureUnit = (value) => {
-    this.setState({ isSelectedCelsius: value === "celsius" }, () =>
-      this.updateWeatherLoad()
-    );
+    this.setState({ isSelectedCelsius: value === "celsius" });
   };
 
   switchWindSpeedUnit = (value) => {
-    this.setState({ isSelectKmH: value === "kmH" }, () =>
-      this.updateWeatherLoad()
-    );
+    this.setState({ isSelectKmH: value === "kmH" });
   };
 
   render() {
