@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaWind } from "react-icons/fa";
+import { WeatherContext } from "./../../contexts/index";
 import TemperatureIcon from "./TemperatureIcon";
 import WindDirectionIcon from "./WindDirectionIcon";
-import styles from './Weather.module.sass'
+import styles from "./Weather.module.sass";
 
-function CurrentWeather({ weather, units }) {
+function CurrentWeather({ weather }) {
+  const {units, TEMPERATURE_UNITS_FOR_UI, WIND_UNITS_FOR_UI } =
+    useContext(WeatherContext);
+
   const { temperature, windSpeed, windDirection } = weather;
-  const { temperatureUnit, windSpeedUnit, windDirectionUnit } = units;
+ 
 
   return (
     <article className={styles.currentWeatherContainer}>
@@ -14,15 +18,16 @@ function CurrentWeather({ weather, units }) {
       <ul>
         <li>
           <TemperatureIcon temperature={temperature} />
-          {temperature} {temperatureUnit}
+          {temperature}
+          {TEMPERATURE_UNITS_FOR_UI[units.temperature_unit]}
         </li>
         <li>
           <FaWind />
-          {windSpeed} {windSpeedUnit}
+          {windSpeed} {WIND_UNITS_FOR_UI[units.wind_speed_unit]}
         </li>
         <li>
           <WindDirectionIcon windDirection={windDirection} />
-          {windDirection} {windDirectionUnit}
+          {windDirection}°
         </li>
       </ul>
     </article>

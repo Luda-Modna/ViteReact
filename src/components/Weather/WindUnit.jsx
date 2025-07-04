@@ -4,7 +4,7 @@ import { WeatherContext } from "./../../contexts/index";
 function WindUnit() {
   const {
     onWindSpeedUnitChange,
-    isSelectKmH,
+    units,
     UNITS: { KM_H, MS },
   } = useContext(WeatherContext);
 
@@ -13,7 +13,7 @@ function WindUnit() {
       <span>Wind speed unit:</span>
       <div>
         <select
-          value={isSelectKmH ? KM_H : MS}
+          value={units. wind_speed_unit}
           onChange={({ target: { value } }) => onWindSpeedUnitChange(value)}
         >
           <option value={KM_H}>km/h</option>

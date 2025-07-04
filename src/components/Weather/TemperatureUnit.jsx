@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { WeatherContext } from "./../../contexts/index";
 
-
 function TemperatureUnit() {
-  const { onTemperatureUnitChange, isSelectedCelsius,UNITS: { CELSIUS, FAHRENHEIT },} =
-    useContext(WeatherContext);
+  const {
+    onTemperatureUnitChange,
+    units,
+    UNITS: { CELSIUS, FAHRENHEIT },
+  } = useContext(WeatherContext);
 
   return (
     <>
@@ -12,7 +14,7 @@ function TemperatureUnit() {
         <span>Temperature unit:</span>
         <div>
           <select
-            value={isSelectedCelsius ? CELSIUS : FAHRENHEIT}
+            value={units.temperature_unit}
             onChange={({ target: { value } }) => onTemperatureUnitChange(value)}
           >
             <option value={CELSIUS}>C</option>

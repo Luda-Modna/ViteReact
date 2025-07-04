@@ -10,79 +10,92 @@ import styles from "./Weather.module.sass";
 const {
   TEMPERATURE_UNITS: { CELSIUS, FAHRENHEIT },
   WIND_UNITS: { KM_H, MS },
+  TEMPERATURE_UNITS_FOR_UI,
+  WIND_UNITS_FOR_UI,
 } = WEATHER_UNITS;
-
-function createInitialIsCelsius() {
-  const unit = localStorage.getItem("units");
-  if (unit) {
-    try {
-      const { temperature_unit } = JSON.parse(unit);
-      return temperature_unit === CELSIUS;
-    } catch {}
-  }
-  return true;
-}
-
-function createInitialIsKmH() {
-  const unit = localStorage.getItem("units");
-  if (unit) {
-    try {
-      const { wind_speed_unit } = JSON.parse(unit);
-      return wind_speed_unit === KM_H;
-    } catch {}
-  }
-  return true;
-}
 
 function WeatherLoaderH() {
   const [weather, setWeather] = useState(null);
-  const [units, setUnits] = useState(null);
-  const [isSelectedCelsius, setIsSelectedCelsius] = useState(
-    createInitialIsCelsius
-  );
-  const [isSelectKmH, setIsSelectKmH] = useState(createInitialIsKmH);
+  const [units, setUnits] = useState({
+    temperature_unit: CELSIUS,
+    wind_speed_unit: KM_H,
+  });
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const savedUnits = localStorage.getItem("units");
+    if (savedUnits) {
+      try {
+        setUnits(JSON.parse(savedUnits));
+      } catch {
+        setError("Використано дефолтні завантаження");
+      }
+    }
+  }, []);
 
   const calcUrl = () => {
-    return `${WEATHER_URL}${
-      isSelectedCelsius ? "" : "&temperature_unit=fahrenheit"
-    }${isSelectKmH ? "" : "&wind_speed_unit=ms"}`;
-  };
+    const { temperature_unit, wind_speed_unit } = units;
 
-  const updateWeatherLoad = () => {
-    const url = calcUrl();
+    let url = WEATHER_URL;
 
-    weatherLoad(url).then(({ weather, units }) => {
-      
-      setWeather(weather);
-      setUnits(units);
-    });
+    if (temperature_unit === "fahrenheit") {
+      url += `&temperature_unit=fahrenheit`;
+    }
+
+    if (wind_speed_unit === "ms") {
+      url += `&wind_speed_unit=ms`;
+    }
+
+    return url;
   };
 
   useEffect(() => {
-    updateWeatherLoad();
+    const url = calcUrl();
 
-    const updatedUnits = {
-      temperature_unit: isSelectedCelsius ? CELSIUS : FAHRENHEIT,
-      wind_speed_unit: isSelectKmH ? KM_H : MS,
-    };
+    setIsFetching(true);
+    setError(null);
 
-    window.localStorage.setItem("units", JSON.stringify(updatedUnits));
-  }, [isSelectedCelsius, isSelectKmH]);
+    try {
+      localStorage.setItem("units", JSON.stringify(units));
+    } catch (e) {
+      console.warn("Не вдалося зберегти units у localStorage:", e);
+    }
+
+    weatherLoad(url)
+      .then(({ weather }) => {
+        setWeather(weather);
+      })
+      .catch((err) => {
+        console.error("Помилка під час завантаження погоди:", err);
+        setError("Не вдалося завантажити погоду");
+      })
+      .finally(() => {
+        setIsFetching(false);
+      });
+  }, [units]);
 
   const switchTemperatureUnit = (value) => {
-    setIsSelectedCelsius(value === CELSIUS);
+    setUnits((prev) => ({
+      ...prev,
+      temperature_unit: value,
+    }));
   };
 
   const switchWindSpeedUnit = (value) => {
-    setIsSelectKmH(value === KM_H);
+    setUnits((prev) => ({
+      ...prev,
+      wind_speed_unit: value,
+    }));
   };
 
   const contextValue = {
     onTemperatureUnitChange: switchTemperatureUnit,
     onWindSpeedUnitChange: switchWindSpeedUnit,
-    isSelectedCelsius,
-    isSelectKmH,
+    units,
     UNITS: { CELSIUS, FAHRENHEIT, KM_H, MS },
+    TEMPERATURE_UNITS_FOR_UI,
+    WIND_UNITS_FOR_UI,
   };
 
   if (!weather || !units) {
@@ -93,7 +106,7 @@ function WeatherLoaderH() {
     <WeatherContext.Provider value={contextValue}>
       <main className={styles.mainContainer}>
         <WeatherUnit />
-        <CurrentWeather weather={weather} units={units} />
+        <CurrentWeather weather={weather} />
       </main>
     </WeatherContext.Provider>
   );
