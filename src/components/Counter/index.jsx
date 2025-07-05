@@ -19,7 +19,6 @@ class Counter extends Component {
     return (
       <>
         <Count count={this.state.count} />
-        <div>{this.state.count}</div>
         <button onClick={this.increment}>+</button>
         <button onClick={this.decrement}>-</button>
       </>

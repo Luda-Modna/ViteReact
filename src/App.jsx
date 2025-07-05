@@ -1,8 +1,8 @@
 import React from "react";
-import WeatherLoaderH from './components/Weather/WeatherLoaderH'
+import RouterPage from "./pages/RouterPage";
 
 function App() {
-  return <WeatherLoaderH />;
+  return <RouterPage />;
 }
 
 export default App;
