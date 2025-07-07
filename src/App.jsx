@@ -1,8 +1,8 @@
 import React from "react";
-import UserInfoForm from './components/UserInfoForm'
+import ContactPage from "./pages/ContactPage";
 
 function App() {
-  return <UserInfoForm />;
+  return <ContactPage />;
 }
 
 export default App;

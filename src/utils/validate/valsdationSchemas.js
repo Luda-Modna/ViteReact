@@ -4,6 +4,17 @@ export const USER_VALIDATION_SCHEMA = yup.object({
   firstName: yup.string().trim().min(2).max(64).required(),
 });
 
+export const CONTACT_VALIDATION_SCHEMA = yup.object({
+  name: yup.string().trim().min(2).max(64).required(),
+  phone: yup
+    .string()
+    .length(13)
+    .matches(/^\+\d{12}$/, "Phone number must presspont pattern +111111111111")
+    .required(),
+  email: yup.string().email(),
+  birthday: yup.date().max(new Date()),
+});
+
 const USER_AUTO_SCHEMA = yup.object({
   model: yup
     .string()
@@ -22,14 +33,11 @@ const USER_AUTO_SCHEMA = yup.object({
     .required(),
 });
 
-USER_AUTO_SCHEMA.validate({
-  model: "Audi",
-  productionDate: new Date(2000, 4, 5),
-  km: 679,
-  number: "DF3833YI",
-})
-  .then((data) => console.log(data))
-  .catch((e) => console.log(e));
-
-
-
+// USER_AUTO_SCHEMA.validate({
+//   model: "Audi",
+//   productionDate: new Date(2000, 4, 5),
+//   km: 679,
+//   number: "DF3833YI",
+// })
+//   .then((data) => console.log(data))
+//   .catch((e) => console.log(e));
