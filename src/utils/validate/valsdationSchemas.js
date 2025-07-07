@@ -1,5 +1,9 @@
 import * as yup from "yup";
 
+export const USER_VALIDATION_SCHEMA = yup.object({
+  firstName: yup.string().trim().min(2).max(64).required(),
+});
+
 const USER_AUTO_SCHEMA = yup.object({
   model: yup
     .string()
@@ -26,3 +30,6 @@ USER_AUTO_SCHEMA.validate({
 })
   .then((data) => console.log(data))
   .catch((e) => console.log(e));
+
+
+
