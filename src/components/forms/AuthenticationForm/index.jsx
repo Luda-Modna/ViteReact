@@ -120,7 +120,7 @@ function SignUpForm() {
               <ErrorMessage
                 name="role"
                 component="div"
-                className={styles.error}
+                className={styles.optionError}
               />
             </div>
 
@@ -137,7 +137,7 @@ function SignUpForm() {
             <ErrorMessage
               name="isAgree"
               component="div"
-              className={styles.error}
+              className={styles.optionError}
             />
 
             <button type="submit" className={styles.button}>
