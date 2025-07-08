@@ -1,0 +1,138 @@
+@import './../../../common/style/_authenticationFormVars.sass'
+    
+body
+ background-color: $main-background-color
+ font-family: sans-serif
+ box-sizing: border-box
+
+.positionLoginLink
+ position: absolute
+ top: 20px
+ right: 30px
+
+.loginLink
+ color: $text-color
+ text-decoration: none
+ border: 1px solid $text-color
+ padding: 10px
+
+.signUpContainer
+ padding-top: 80px
+ max-width: 600px
+ margin: 0 auto
+ text-align: center
+ @media screen and (max-width: 640px) 
+  margin: 0
+  max-width: 400px
+
+    
+.title
+ color: $text-color
+ font-size: 30px
+ font-weight: 400
+ text-transform: uppercase
+ margin-bottom: 10px
+
+.subtitle
+ font-size: 14px
+ margin-bottom: 30px
+ color: $text-color
+
+.form 
+ @include flexContainer( center , column )
+ max-width: 800px
+ width: 100%
+ margin: 0 auto
+ padding: 10px
+ gap: 20px
+
+.input 
+ padding: 10px
+ width: 90%
+ position: relative
+ 
+
+.formControl
+ @include flexContainer( center ,  column )
+ flex: 1 1 45%
+ position: relative
+
+ label
+  font-size: 14px
+  margin-bottom: 5px
+
+ @media screen and (max-width: 640px) 
+  flex: 1 1 100%
+  width: 100%
+
+
+.error
+ font-size: 12px
+ color: red
+ margin-top: 5px
+ position: absolute
+ left: 5%
+ 
+ @media (max-width:640px) 
+  top:80%
+
+
+
+
+.inputRow
+ @include flexContainer( center ,  row )
+ gap: 10px
+
+ @media (max-width:640px) 
+   @include flexContainer($fd: column )
+
+
+.valid 
+ border: 2px solid green
+
+.invalid 
+ border: 2px solid red
+
+.roleGroup
+ @include flexContainer( center , column )
+ text-align: left
+ font-size: 14px
+ color: $text-color
+ @media screen and (max-width: 640px) 
+  width: 95%
+
+.roleItem
+ border: 1px solid $text-color
+ padding: 5px
+ display: flex
+ gap: 5px
+ margin-bottom: 5px
+
+.detalsRoleItem
+ font-size: 10px
+
+.checkboxContainer
+ @include flexContainer( $fd: row )
+ gap: 5px
+
+.checkboxItem
+ color: $text-color
+ font-size: 15px
+
+.linkTermOfServise
+ color: $text-color
+ font-size: 15px
+ 
+.button
+ background-color: #29d2d0
+ color: $text-color
+ padding: 12px
+ font-size: 16px
+ border: none
+ border-radius: 6px
+ cursor: pointer
+ max-width: 600px
+ text-transform: uppercase
+
+ @media screen and (max-width: 640px) 
+  max-width: 400px

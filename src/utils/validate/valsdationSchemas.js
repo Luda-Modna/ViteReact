@@ -1,5 +1,47 @@
 import * as yup from "yup";
 
+export const SIGN_UP_VALIDATION_SCHEMA = yup.object({
+  firstName: yup.string().trim().min(2).max(64).required(),
+  lastName: yup.string().trim().min(2).max(64).required(),
+  nickName: yup.string().trim().min(2).max(64),
+  email: yup.string().email().required(),
+  password: yup
+    .string()
+    .required("Пароль обовʼязковий")
+    .min(6, "Пароль має містити щонайменше 6 символів")
+    .matches(/[a-z]/, "Пароль має містити хоча б одну маленьку літеру")
+    .matches(/[A-Z]/, "Пароль має містити хоча б одну велику літеру")
+    .matches(/\d/, "Пароль має містити хоча б одну цифру")
+    .matches(
+      /[@$!%*?&]/,
+      "Пароль має містити хоча б один спеціальний символ (@, $, !, %, *, ?, &)"
+    ),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Паролі мають збігатися")
+    .required(),
+  role: yup.string().required("Оберіть роль"),
+  isAgree: yup
+    .boolean()
+    .oneOf([true], "Ви маєте погодитися з умовами")
+    .required("Обовʼязково"),
+});
+
+export const LOGIN_VALIDATION_SCHEMA = yup.object({
+  email: yup.string().email().required(),
+  password: yup
+    .string()
+    .required("Пароль обовʼязковий")
+    .min(6, "Пароль має містити щонайменше 6 символів")
+    .matches(/[a-z]/, "Пароль має містити хоча б одну маленьку літеру")
+    .matches(/[A-Z]/, "Пароль має містити хоча б одну велику літеру")
+    .matches(/\d/, "Пароль має містити хоча б одну цифру")
+    .matches(
+      /[@$!%*?&]/,
+      "Пароль має містити хоча б один спеціальний символ (@, $, !, %, *, ?, &)"
+    ),
+});
+
 export const USER_VALIDATION_SCHEMA = yup.object({
   firstName: yup.string().trim().min(2).max(64).required(),
 });

@@ -12,13 +12,14 @@ function Input({ name, label, classes, ...restProps }) {
         });
 
         return (
-          <label>
-            <span>{label} </span>
-            <input className={inputClassNames} {...restProps} {...field} />
-            {meta.error && meta.touched && (
-              <span className={classes.error}>{meta.error}</span>
-            )}
-          </label>
+          <div className={classes.formControl}>
+            <label>
+              <input className={inputClassNames} {...restProps} {...field} />
+              {meta.error && meta.touched && (
+                <div className={classes.error}>{meta.error}</div>
+              )}
+            </label>
+          </div>
         );
       }}
     </Field>

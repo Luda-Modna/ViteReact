@@ -1,8 +1,8 @@
 import React from "react";
-import ContactPage from "./pages/ContactPage";
+import FormsPage from "./pages/FormsPage";
 
 function App() {
-  return <ContactPage />;
+  return <FormsPage />;
 }
 
 export default App;
