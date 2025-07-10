@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import getMonthDays from "./getMountDays.js";
-import MonthHead from "./MonthHead";
-import MonthTableHead from "./MonthTableHead";
-import MonthWeek from "./MonthWeek";
-import styles from "./Calendar.module.sass";
+import getMonthDays from './getMountDays.js';
+import MonthHead from './MonthHead';
+import MonthTableHead from './MonthTableHead';
+import MonthWeek from './MonthWeek';
+import styles from './Calendar.module.sass';
 
 const Month = () => {
   const date = new Date();

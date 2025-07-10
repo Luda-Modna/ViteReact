@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { WeatherContext } from "./../../contexts/index.js";
-import weatherLoad from "../../api/weatherLoad.js";
-import WEATHER_URL from "./constans.js";
-import WeatherUnit from "./WeatherUnit.jsx";
-import CurrentWeather from "./CurrentWeather.jsx";
-import styles from "./Weather.module.sass";
+import React, { Component } from 'react';
+import { WeatherContext } from './../../contexts/index.js';
+import weatherLoad from '../../api/weatherLoad.js';
+import WEATHER_URL from './constans.js';
+import WeatherUnit from './WeatherUnit.jsx';
+import CurrentWeather from './CurrentWeather.jsx';
+import styles from './Weather.module.sass';
 
 export default class Weather extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -21,8 +21,8 @@ export default class Weather extends Component {
   calcUrl = () => {
     const { isSelectedCelsius, isSelectKmH } = this.state;
     return `${WEATHER_URL}${
-      isSelectedCelsius ? "" : "&temperature_unit=fahrenheit"
-    }${isSelectKmH ? "" : "&wind_speed_unit=ms"}`;
+      isSelectedCelsius ? '' : '&temperature_unit=fahrenheit'
+    }${isSelectKmH ? '' : '&wind_speed_unit=ms'}`;
   };
 
   updateWeatherLoad = () => {
@@ -32,8 +32,8 @@ export default class Weather extends Component {
     });
   };
 
-  componentDidMount() {
-    const storedUnits = window.localStorage.getItem("units");
+  componentDidMount () {
+    const storedUnits = window.localStorage.getItem('units');
 
     if (storedUnits) {
       const units = JSON.parse(storedUnits);
@@ -42,8 +42,8 @@ export default class Weather extends Component {
 
       this.setState(
         {
-          isSelectedCelsius: temperature_unit === "celsius",
-          isSelectKmH: wind_speed_unit === "kmH",
+          isSelectedCelsius: temperature_unit === 'celsius',
+          isSelectKmH: wind_speed_unit === 'kmH',
         },
         () => {
           this.updateWeatherLoad();
@@ -54,7 +54,7 @@ export default class Weather extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     const { isSelectedCelsius, isSelectKmH } = this.state;
 
     if (
@@ -64,23 +64,23 @@ export default class Weather extends Component {
       this.updateWeatherLoad();
 
       const units = {
-        temperature_unit: isSelectedCelsius ? "celsius" : "fahrenheit",
-        wind_speed_unit: isSelectKmH ? "kmH" : "ms",
+        temperature_unit: isSelectedCelsius ? 'celsius' : 'fahrenheit',
+        wind_speed_unit: isSelectKmH ? 'kmH' : 'ms',
       };
 
-      window.localStorage.setItem("units", JSON.stringify(units));
+      window.localStorage.setItem('units', JSON.stringify(units));
     }
   }
 
-  switchTemperatureUnit = (value) => {
-    this.setState({ isSelectedCelsius: value === "celsius" });
+  switchTemperatureUnit = value => {
+    this.setState({ isSelectedCelsius: value === 'celsius' });
   };
 
-  switchWindSpeedUnit = (value) => {
-    this.setState({ isSelectKmH: value === "kmH" });
+  switchWindSpeedUnit = value => {
+    this.setState({ isSelectKmH: value === 'kmH' });
   };
 
-  render() {
+  render () {
     const { weather, units, isSelectedCelsius, isSelectKmH } = this.state;
 
     if (!weather || !units) {

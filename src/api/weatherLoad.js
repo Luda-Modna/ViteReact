@@ -1,7 +1,7 @@
-function weatherLoad(url) {
+function weatherLoad (url) {
   return fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       const weather = data.current_weather;
       const currentWeather = {
         temperature: weather.temperature,
@@ -18,7 +18,7 @@ function weatherLoad(url) {
 
       return { weather: currentWeather, units: currentWeatherUnits };
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 }
 
 export default weatherLoad;

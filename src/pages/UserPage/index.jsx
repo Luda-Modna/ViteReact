@@ -1,8 +1,8 @@
-import React from "react";
-import HeaderUserPage from "../../components/HeaderUserPage";
-import FooterUserPage from '../../components/FooterUserPage'
+import React from 'react';
+import HeaderUserPage from '../../components/HeaderUserPage';
+import FooterUserPage from '../../components/FooterUserPage';
 
-function UserPage() {
+function UserPage () {
   return (
     <div>
       <HeaderUserPage />
@@ -13,4 +13,3 @@ function UserPage() {
 }
 
 export default UserPage;
-

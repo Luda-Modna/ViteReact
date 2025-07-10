@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import classNames from "classnames";
-import styles from "./LoginForm.module.css";
+import React, { Component } from 'react';
+import classNames from 'classnames';
+import styles from './LoginForm.module.css';
 
-const INITIAL_VALUES = { email: "", password: "" };
+const INITIAL_VALUES = { email: '', password: '' };
 
 const LOGIN_FORM_REG_EXP = {
   email: /^.+@.+$/,
@@ -10,7 +10,7 @@ const LOGIN_FORM_REG_EXP = {
 };
 
 export default class LoginForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.praventDefault();
     this.setState(INITIAL_VALUES);
   };
@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
     });
   };
 
-  render() {
+  render () {
     const { email, password, isEmailValid, isPasswordValid } = this.state;
 
     // const emailClassName = `${styles.input} ${
@@ -65,9 +65,9 @@ export default class LoginForm extends Component {
             <span className={styles.inputName}>Email: </span>
             <input
               className={emailClassName}
-              name="email"
-              type="email"
-              placeholder="your@email.com"
+              name='email'
+              type='email'
+              placeholder='your@email.com'
               value={email}
               onChange={this.handleEmailChange}
             />
@@ -76,13 +76,13 @@ export default class LoginForm extends Component {
             <span className={styles.inputName}>Password: </span>
             <input
               className={passwordClassName}
-              name="password"
-              type="password"
+              name='password'
+              type='password'
               value={password}
               onChange={this.handlePasswordChange}
             />
           </label>
-          <button type="submit">Login</button>
+          <button type='submit'>Login</button>
         </form>
       </div>
     );

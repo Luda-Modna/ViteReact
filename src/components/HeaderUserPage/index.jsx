@@ -1,6 +1,6 @@
-import ThemeSwitcher from "../../components/ThemeSwitcher";
+import ThemeSwitcher from '../../components/ThemeSwitcher';
 
-function HeaderUserPage() {
+function HeaderUserPage () {
   return (
     <header>
       <span>Header</span> <ThemeSwitcher />

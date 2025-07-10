@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-function StopWatchH() {
+function StopWatchH () {
   const [count, setCount] = useState(new Date(0, 0, 0, 0, 0, 0, 0));
   const [isRunning, setIsRunning] = useState(true);
 
   const tick = () => {
-    setCount((count) => {
+    setCount(count => {
       const newCount = new Date(count.valueOf());
       newCount.setSeconds(count.getSeconds() + 1);
       return newCount;
@@ -13,7 +13,7 @@ function StopWatchH() {
   };
 
   const start = () => {
-    setIsRunning((isRunning) => !isRunning);
+    setIsRunning(isRunning => !isRunning);
   };
 
   const reset = () => {
@@ -34,8 +34,8 @@ function StopWatchH() {
 
   return (
     <article>
-      <div>{count.toLocaleTimeString("en-GB")}</div>
-      <button onClick={start}>{isRunning ? "Stop" : "Start"} </button>
+      <div>{count.toLocaleTimeString('en-GB')}</div>
+      <button onClick={start}>{isRunning ? 'Stop' : 'Start'} </button>
       <button onClick={reset}>Reset</button>
     </article>
   );

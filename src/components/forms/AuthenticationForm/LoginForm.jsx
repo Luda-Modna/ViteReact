@@ -1,14 +1,14 @@
-import React from "react";
-import { NavLink } from "react-router";
-import { Form, Formik, Field, ErrorMessage } from "formik";
-import { LOGIN_VALIDATION_SCHEMA } from "./../../../utils/validate/valsdationSchemas";
-import Input from "./../Input";
-import styles from "./AuthenticationForm.module.sass";
+import React from 'react';
+import { NavLink } from 'react-router';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { LOGIN_VALIDATION_SCHEMA } from './../../../utils/validate/valsdationSchemas';
+import Input from './../Input';
+import styles from './AuthenticationForm.module.sass';
 
-function LoginForm() {
+function LoginForm () {
   const initialValues = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   const handleSubmit = (values, formikBag) => {
@@ -26,7 +26,7 @@ function LoginForm() {
   return (
     <>
       <div className={styles.positionLoginLink}>
-        <NavLink className={styles.loginLink} to="/">
+        <NavLink className={styles.loginLink} to='/'>
           SingUp
         </NavLink>
       </div>
@@ -39,18 +39,18 @@ function LoginForm() {
         >
           <Form className={styles.form}>
             <Input
-              type="email"
-              name="email"
-              placeholder="Email"
+              type='email'
+              name='email'
+              placeholder='Email'
               classes={classes}
             />
             <Input
-              type="password"
-              name="password"
-              placeholder="password"
+              type='password'
+              name='password'
+              placeholder='password'
               classes={classes}
             />
-            <button type="submit" className={styles.button}>
+            <button type='submit' className={styles.button}>
               Login
             </button>
           </Form>

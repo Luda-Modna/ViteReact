@@ -1,8 +1,8 @@
-import React from "react";
-import { isSameDay, getDate } from "date-fns";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import styles from "./Calendar.module.sass";
+import React from 'react';
+import { isSameDay, getDate } from 'date-fns';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import styles from './Calendar.module.sass';
 
 const MonthWeekDay = ({ day, today }) => {
   return (
@@ -12,7 +12,7 @@ const MonthWeekDay = ({ day, today }) => {
         [styles.justDay]: !isSameDay(day, today),
       })}
     >
-      {day ? getDate(day) : ""}
+      {day ? getDate(day) : ''}
     </td>
   );
 };

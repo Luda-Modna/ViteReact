@@ -1,6 +1,6 @@
-import styles from "./UserList.module.css";
+import styles from './UserList.module.css';
 
-function UserListItem(props) {
+function UserListItem (props) {
   const {
     selectUser,
     onDelete,
@@ -8,7 +8,7 @@ function UserListItem(props) {
   } = props;
 
   const selectUserStyle = {
-    backgroundColor: isSelected ? "#5c979a" : "white",
+    backgroundColor: isSelected ? '#5c979a' : 'white',
   };
 
   return (
@@ -32,7 +32,7 @@ function UserListItem(props) {
 
       <button
         className={styles.buttonDelete}
-        onClick={(e) => {
+        onClick={e => {
           e.stopPropagation();
           onDelete(id);
         }}

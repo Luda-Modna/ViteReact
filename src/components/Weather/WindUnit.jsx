@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { WeatherContext } from "./../../contexts/index";
+import React, { useContext } from 'react';
+import { WeatherContext } from './../../contexts/index';
 
-function WindUnit() {
+function WindUnit () {
   const {
     onWindSpeedUnitChange,
     units,
@@ -13,7 +13,7 @@ function WindUnit() {
       <span>Wind speed unit:</span>
       <div>
         <select
-          value={units. wind_speed_unit}
+          value={units.wind_speed_unit}
           onChange={({ target: { value } }) => onWindSpeedUnitChange(value)}
         >
           <option value={KM_H}>km/h</option>

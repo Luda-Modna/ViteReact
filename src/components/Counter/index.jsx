@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class Counter extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       count: 0,
@@ -15,7 +15,7 @@ class Counter extends Component {
     this.setState({ count: this.state.count - 1 });
   };
 
-  render() {
+  render () {
     return (
       <>
         <Count count={this.state.count} />
@@ -28,6 +28,6 @@ class Counter extends Component {
 
 export default Counter;
 
-function Count({ count }) {
+function Count ({ count }) {
   return <div>Props: {count}</div>;
 }

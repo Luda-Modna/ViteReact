@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 export default class StopWatch extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -9,19 +9,19 @@ export default class StopWatch extends Component {
     };
     this.id = null;
   }
-  
-  componentDidMount() {
+
+  componentDidMount () {
     this.start();
   }
 
-  componentDidUpdate() {}
-  componentWillUnmount() {
+  componentDidUpdate () {}
+  componentWillUnmount () {
     this.stop();
   }
 
   tick = () => {
     const { count } = this.state;
-    console.log("s");
+    console.log('s');
     const newCount = new Date(count.valueOf());
     newCount.setSeconds(count.getSeconds() + 1);
     this.setState({ count: newCount });
@@ -39,12 +39,12 @@ export default class StopWatch extends Component {
     this.setState({ count: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
 
-  render() {
+  render () {
     const { count } = this.state;
 
     return (
       <article>
-        <div>{count.toLocaleTimeString("en-GB")}</div>
+        <div>{count.toLocaleTimeString('en-GB')}</div>
         <button onClick={this.start}>Start</button>
         <button onClick={this.stop}>Stop</button>
         <button onClick={this.reset}>Reset</button>

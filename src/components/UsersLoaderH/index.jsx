@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import getUsers from "../../api";
-import styles from "./../UserLoader/UserLoader.module.sass";
-import classNames from "classnames";
+import React, { useState, useEffect } from 'react';
+import getUsers from '../../api';
+import styles from './../UserLoader/UserLoader.module.sass';
+import classNames from 'classnames';
 
-function UsersLoaderH() {
+function UsersLoaderH () {
   const [users, setUsers] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
@@ -17,8 +17,8 @@ function UsersLoaderH() {
       page: currentPage,
       results: itemsPerPage,
     })
-      .then((data) => setUsers(data.results))
-      .catch((e) => setError(e))
+      .then(data => setUsers(data.results))
+      .catch(e => setError(e))
       .finally(() => setIsFetching(false));
   };
 
@@ -27,12 +27,12 @@ function UsersLoaderH() {
   }, [currentPage, itemsPerPage]);
 
   const nextPage = () => {
-    setCurrentPage((currentPage) => currentPage + 1);
+    setCurrentPage(currentPage => currentPage + 1);
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((currentPage) => currentPage - 1);
+      setCurrentPage(currentPage => currentPage - 1);
     }
   };
 
@@ -51,27 +51,27 @@ function UsersLoaderH() {
             <label>
               <span>Enter the number of users: </span>
               <select value={itemsPerPage} onChange={handleResultsChange}>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
+                <option value='5'>5</option>
+                <option value='10'>10</option>
+                <option value='15'>15</option>
               </select>
             </label>
             <div className={styles.btnGroup}>
-              <button onClick={prevPage}>{"<"}</button>
-              <button onClick={nextPage}>{">"}</button>
+              <button onClick={prevPage}>{'<'}</button>
+              <button onClick={nextPage}>{'>'}</button>
             </div>
           </div>
 
           <ul className={styles.userList}>
-            {users.map((u) => (
+            {users.map(u => (
               <li key={u.login.uuid} className={styles.userCard}>
                 <div className={styles.userPhoto}>
                   <img
                     src={u.picture.medium}
                     alt={`${u.name.first} ${u.name.last}`}
                     className={classNames(styles.photoImg, {
-                      [styles.male]: u.gender === "male",
-                      [styles.female]: u.gender === "female",
+                      [styles.male]: u.gender === 'male',
+                      [styles.female]: u.gender === 'female',
                     })}
                   />
                   {u.nat && (

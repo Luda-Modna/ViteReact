@@ -1,19 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router";
-import { Form, Formik, Field, ErrorMessage } from "formik";
-import { SIGN_UP_VALIDATION_SCHEMA } from "./../../../utils/validate/valsdationSchemas";
-import styles from "./AuthenticationForm.module.sass";
-import Input from "./../Input";
+import React from 'react';
+import { NavLink } from 'react-router';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { SIGN_UP_VALIDATION_SCHEMA } from './../../../utils/validate/valsdationSchemas';
+import styles from './AuthenticationForm.module.sass';
+import Input from './../Input';
 
-function SignUpForm() {
+function SignUpForm () {
   const initialValues = {
-    firstName: "",
-    lastName: "",
-    nickName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    role: "",
+    firstName: '',
+    lastName: '',
+    nickName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    role: '',
     isAgree: false,
   };
 
@@ -32,7 +32,7 @@ function SignUpForm() {
   return (
     <>
       <div className={styles.positionLoginLink}>
-        <NavLink to="/login" className={styles.loginLink}>
+        <NavLink to='/login' className={styles.loginLink}>
           Login
         </NavLink>
       </div>
@@ -50,52 +50,52 @@ function SignUpForm() {
           <Form className={styles.form}>
             <div className={styles.inputRow}>
               <Input
-                type="text"
-                name="firstName"
-                placeholder="Yourname"
+                type='text'
+                name='firstName'
+                placeholder='Yourname'
                 autoFocus
                 classes={classes}
               />
               <Input
-                type="text"
-                name="lastName"
-                placeholder="Your lastName"
+                type='text'
+                name='lastName'
+                placeholder='Your lastName'
                 classes={classes}
               />
             </div>
             <div className={styles.inputRow}>
               <Input
-                type="text"
-                name="nickName"
-                placeholder="nickName"
+                type='text'
+                name='nickName'
+                placeholder='nickName'
                 classes={classes}
               />
               <Input
-                type="email"
-                name="email"
-                placeholder="Email"
+                type='email'
+                name='email'
+                placeholder='Email'
                 classes={classes}
               />
             </div>
             <div className={styles.inputRow}>
               <Input
-                type="password"
-                name="password"
-                placeholder="password"
+                type='password'
+                name='password'
+                placeholder='password'
                 classes={classes}
               />
               <Input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
+                type='password'
+                name='confirmPassword'
+                placeholder='Confirm Password'
                 classes={classes}
               />
             </div>
 
-            <div role="group" className={styles.roleGroup}>
+            <div role='group' className={styles.roleGroup}>
               <label>
                 <div className={styles.roleItem}>
-                  <Field type="radio" name="role" value="buyer" />
+                  <Field type='radio' name='role' value='buyer' />
                   <div>
                     <h3>Join As a Buyer</h3>
                     <p className={styles.detalsRoleItem}>
@@ -107,7 +107,7 @@ function SignUpForm() {
               </label>
               <label>
                 <div className={styles.roleItem}>
-                  <Field type="radio" name="role" value="creative" />
+                  <Field type='radio' name='role' value='creative' />
                   <div>
                     <h3>Join As a Creative</h3>
                     <p className={styles.detalsRoleItem}>
@@ -118,29 +118,29 @@ function SignUpForm() {
                 </div>
               </label>
               <ErrorMessage
-                name="role"
-                component="div"
+                name='role'
+                component='div'
                 className={styles.optionError}
               />
             </div>
 
             <label className={styles.checkboxContainer}>
-              <Field type="checkbox" name="isAgree" />
+              <Field type='checkbox' name='isAgree' />
               <p className={styles.checkboxItem}>
-                {" "}
+                {' '}
                 By clicking this checkbox, you agree to our
               </p>
-              <a className={styles.linkTermOfServise} href="#">
+              <a className={styles.linkTermOfServise} href='#'>
                 Terms of Service
               </a>
             </label>
             <ErrorMessage
-              name="isAgree"
-              component="div"
+              name='isAgree'
+              component='div'
               className={styles.optionError}
             />
 
-            <button type="submit" className={styles.button}>
+            <button type='submit' className={styles.button}>
               Create Account
             </button>
           </Form>

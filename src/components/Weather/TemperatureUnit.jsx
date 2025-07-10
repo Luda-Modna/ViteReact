@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { WeatherContext } from "./../../contexts/index";
+import React, { useContext } from 'react';
+import { WeatherContext } from './../../contexts/index';
 
-function TemperatureUnit() {
+function TemperatureUnit () {
   const {
     onTemperatureUnitChange,
     units,

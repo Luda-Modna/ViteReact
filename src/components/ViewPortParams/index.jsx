@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ViewPortParams extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -14,11 +14,11 @@ export default class ViewPortParams extends Component {
     this.setState({ x: window.innerWidth, y: window.innerHeight });
   };
 
-  componentDidMount() {
-    window.addEventListener("resize", this.resizeHandler);
+  componentDidMount () {
+    window.addEventListener('resize', this.resizeHandler);
   }
 
-  render() {
+  render () {
     const { x, y } = this.state;
     return (
       <div>

@@ -1,4 +1,4 @@
-function UserListItem(props) {
+function UserListItem (props) {
   const {
     isLight,
     selectUser,
@@ -7,9 +7,9 @@ function UserListItem(props) {
   const inlineStyles = {
     backgroundColor: isSelected
       ? isLight
-        ? "yellow"
-        : "violet"
-      : "transparent",
+        ? 'yellow'
+        : 'violet'
+      : 'transparent',
   };
   return (
     <li style={inlineStyles} onClick={() => selectUser(id)}>

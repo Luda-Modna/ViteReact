@@ -1,6 +1,6 @@
-import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
+import { FaTemperatureHigh, FaTemperatureLow } from 'react-icons/fa';
 
-function TemperatureIcon({ temperature }) {
+function TemperatureIcon ({ temperature }) {
   return temperature > 0 ? <FaTemperatureHigh /> : <FaTemperatureLow />;
 }
 

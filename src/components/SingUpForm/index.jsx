@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import SingUpFormItem from "./SingUpFormItem.jsx";
+import React, { Component } from 'react';
+import SingUpFormItem from './SingUpFormItem.jsx';
 
 const INITIAL_VALUES = {
-  name: "",
-  email: "",
-  password: "",
-  passwordConfirmation: "",
+  name: '',
+  email: '',
+  password: '',
+  passwordConfirmation: '',
 };
 
 const SINGUP_FORM_REG_EXP = {
@@ -15,7 +15,7 @@ const SINGUP_FORM_REG_EXP = {
 };
 
 export default class SingUpForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -30,7 +30,7 @@ export default class SingUpForm extends Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.praventDefault();
     this.setState(INITIAL_VALUES);
   };
@@ -71,12 +71,12 @@ export default class SingUpForm extends Component {
   };
 
   toggleShowPassword = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       showPassword: !prevState.showPassword,
     }));
   };
 
-  render() {
+  render () {
     const {
       name,
       email,

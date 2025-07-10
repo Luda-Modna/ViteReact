@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { FaWind } from "react-icons/fa";
-import { WeatherContext } from "./../../contexts/index";
-import TemperatureIcon from "./TemperatureIcon";
-import WindDirectionIcon from "./WindDirectionIcon";
-import styles from "./Weather.module.sass";
+import React, { useContext } from 'react';
+import { FaWind } from 'react-icons/fa';
+import { WeatherContext } from './../../contexts/index';
+import TemperatureIcon from './TemperatureIcon';
+import WindDirectionIcon from './WindDirectionIcon';
+import styles from './Weather.module.sass';
 
-function CurrentWeather({ weather }) {
-  const {units, TEMPERATURE_UNITS_FOR_UI, WIND_UNITS_FOR_UI } =
-    useContext(WeatherContext);
+function CurrentWeather ({ weather }) {
+  const { units, TEMPERATURE_UNITS_FOR_UI, WIND_UNITS_FOR_UI } = useContext(
+    WeatherContext
+  );
 
   const { temperature, windSpeed, windDirection } = weather;
- 
 
   return (
     <article className={styles.currentWeatherContainer}>

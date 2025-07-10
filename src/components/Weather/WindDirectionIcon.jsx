@@ -7,9 +7,9 @@ import {
   BsArrowDownLeft,
   BsArrowLeft,
   BsArrowUpLeft,
-} from "react-icons/bs";
+} from 'react-icons/bs';
 
-function WindDirectionIcon({ windDirection }) {
+function WindDirectionIcon ({ windDirection }) {
   let Icon = BsArrowUp;
 
   if (windDirection >= 20 && windDirection < 70) {

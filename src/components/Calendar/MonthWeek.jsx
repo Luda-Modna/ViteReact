@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import MonthWeekDay from "./MonthWeekDay";
+import PropTypes from 'prop-types';
+import MonthWeekDay from './MonthWeekDay';
 
 const MonthWeek = ({ week, today }) => {
   return (

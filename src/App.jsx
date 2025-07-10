@@ -1,7 +1,7 @@
-import React from "react";
-import FormsPage from "./pages/FormsPage";
+import React from 'react';
+import FormsPage from './pages/FormsPage';
 
-function App() {
+function App () {
   return <FormsPage />;
 }
 

@@ -1,6 +1,6 @@
-import CurrentDate from "./CurrentDate";
-import Month from "./Month";
-import styles from "./Calendar.module.sass";
+import CurrentDate from './CurrentDate';
+import Month from './Month';
+import styles from './Calendar.module.sass';
 
 const Calendar = () => {
   const date = new Date();

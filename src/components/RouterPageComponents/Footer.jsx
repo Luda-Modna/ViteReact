@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./RouterPage.module.sass";
+import React from 'react';
+import styles from './RouterPage.module.sass';
 
-function Footer() {
+function Footer () {
   return <footer className={styles.footerContainer}>Footer</footer>;
 }
 

@@ -1,9 +1,19 @@
-function getUsers(options) {
+function getUsers (options) {
   const defaultOptions = {
     page: 1,
     results: 10,
-    seed: "pe2022",
-    inc: ["name", "gender", "email", "login",'picture','nat','location','phone','gender'],
+    seed: 'pe2022',
+    inc: [
+      'name',
+      'gender',
+      'email',
+      'login',
+      'picture',
+      'nat',
+      'location',
+      'phone',
+      'gender',
+    ],
   };
 
   const realOptions = {
@@ -15,7 +25,7 @@ function getUsers(options) {
 
   return fetch(
     `https://randomuser.me/api/?page=${page}&results=${results}&seed=${seed}&inc=${inc}`
-  ).then((response) => response.json());
+  ).then(response => response.json());
 }
 
 export default getUsers;

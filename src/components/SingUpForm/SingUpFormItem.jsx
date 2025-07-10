@@ -1,6 +1,6 @@
-import React from "react";
-import classNames from "classnames";
-import styles from "./SingUpForm.module.css";
+import React from 'react';
+import classNames from 'classnames';
+import styles from './SingUpForm.module.css';
 
 const SingUpFormItem = ({
   name,
@@ -50,8 +50,8 @@ const SingUpFormItem = ({
           <div>
             <input
               className={nameClassName}
-              type="text"
-              name="name"
+              type='text'
+              name='name'
               value={name}
               onChange={onNameChange}
             />
@@ -59,12 +59,12 @@ const SingUpFormItem = ({
         </label>
         <label className={styles.label}>
           <span className={styles.inputName}>Email: </span>
-          <div className="inputStyles">
+          <div className='inputStyles'>
             <input
               className={emailClassName}
-              name="email"
-              type="email"
-              placeholder="your@email.com"
+              name='email'
+              type='email'
+              placeholder='your@email.com'
               value={email}
               onChange={onEmailChange}
             />
@@ -72,30 +72,30 @@ const SingUpFormItem = ({
         </label>
         <label className={styles.label}>
           <span className={styles.inputName}>Password: </span>
-          <div className="inputStyles">
+          <div className='inputStyles'>
             <input
               className={passwordClassName}
-              name="password"
-              type={showPassword ? "text" : "password"}
+              name='password'
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={onPasswordChange}
-            />{" "}
+            />{' '}
             <button
-              type="button"
+              type='button'
               className={styles.togglePasswordBtn}
               onClick={onTogglePassword}
             >
-              {showPassword ? "Hide password" : "Show password"}
+              {showPassword ? 'Hide password' : 'Show password'}
             </button>
           </div>
         </label>
         <label>
           <span>Password Confirmation: </span>
-          <div className="inputStyles">
+          <div className='inputStyles'>
             <input
               className={passwordConfirmationClassName}
-              type="password"
-              name="passwordConfirmation"
+              type='password'
+              name='passwordConfirmation'
               value={passwordConfirmation}
               onChange={onPasswordConfirmationChange}
             />
@@ -104,12 +104,12 @@ const SingUpFormItem = ({
         <label>
           <span>I agree to the terms and conditions</span>
           <input
-            type="checkbox"
+            type='checkbox'
             checked={isAgreed}
             onChange={onAgreementChange}
           />
         </label>
-        <button className={styles.signUpButton} type="submit">
+        <button className={styles.signUpButton} type='submit'>
           Sign Up
         </button>
       </form>

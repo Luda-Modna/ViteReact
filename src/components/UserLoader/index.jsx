@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import getUsers from "../../api";
-import styles from "./UserLoader.module.sass";
-import classNames from "classnames";
+import React, { Component } from 'react';
+import getUsers from '../../api';
+import styles from './UserLoader.module.sass';
+import classNames from 'classnames';
 
 export default class UserLoader extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -24,16 +24,16 @@ export default class UserLoader extends Component {
       page: currentPage,
       results: itemsPerPage,
     })
-      .then((data) => this.setState({ users: data.results }))
-      .catch((e) => this.setState({ error: e }))
+      .then(data => this.setState({ users: data.results }))
+      .catch(e => this.setState({ error: e }))
       .finally(() => this.setState({ isFetching: false }));
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.loadUsers();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     const { currentPage } = this.state;
     if (currentPage !== prevState.currentPage) {
       this.loadUsers();
@@ -61,7 +61,7 @@ export default class UserLoader extends Component {
     );
   };
 
-  render() {
+  render () {
     const { users, isFetching, error, itemsPerPage } = this.state;
 
     return (
@@ -77,27 +77,27 @@ export default class UserLoader extends Component {
                   value={itemsPerPage}
                   onChange={this.handleResultsChange}
                 >
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
+                  <option value='5'>5</option>
+                  <option value='10'>10</option>
+                  <option value='15'>15</option>
                 </select>
               </label>
               <div className={styles.btnGroup}>
-                <button onClick={this.prevPage}>{"<"}</button>
-                <button onClick={this.nextPage}>{">"}</button>
+                <button onClick={this.prevPage}>{'<'}</button>
+                <button onClick={this.nextPage}>{'>'}</button>
               </div>
             </div>
 
             <ul className={styles.userList}>
-              {users.map((u) => (
+              {users.map(u => (
                 <li key={u.login.uuid} className={styles.userCard}>
                   <div className={styles.userPhoto}>
                     <img
                       src={u.picture.medium}
                       alt={`${u.name.first} ${u.name.last}`}
                       className={classNames(styles.photoImg, {
-                        [styles.male]: u.gender === "male",
-                        [styles.female]: u.gender === "female",
+                        [styles.male]: u.gender === 'male',
+                        [styles.female]: u.gender === 'female',
                       })}
                     />
                     {u.nat && (
