@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import getUsers from '../../api';
 import styles from './../UserLoader/UserLoader.module.sass';
 import classNames from 'classnames';
+import { useData } from '../../hooks';
 
 function UsersLoaderH () {
-  const [users, setUsers] = useState([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
-  const loadUsers = () => {
-    setIsFetching(true);
-
-    getUsers({
-      page: currentPage,
-      results: itemsPerPage,
-    })
-      .then(data => setUsers(data.results))
-      .catch(e => setError(e))
-      .finally(() => setIsFetching(false));
-  };
-
-  useEffect(() => {
-    loadUsers();
-  }, [currentPage, itemsPerPage]);
+  const {
+    data: users,
+    isFetching,
+    error,
+  } = useData(getUsers, itemsPerPage, currentPage);
 
   const nextPage = () => {
     setCurrentPage(currentPage => currentPage + 1);
