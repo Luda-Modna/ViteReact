@@ -1,8 +1,8 @@
 import React from 'react';
-import UserLoaderH from './components/UsersLoaderH'
+import FormsPage from './pages/FormsPage'
 
 function App () {
-  return <UserLoaderH />;
+  return <FormsPage />;
 }
 
 export default App;

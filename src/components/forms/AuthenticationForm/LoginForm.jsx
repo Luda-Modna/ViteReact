@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { Form, Formik } from 'formik';
 import { LOGIN_VALIDATION_SCHEMA } from './../../../utils/validate/valsdationSchemas';
 import Input from './../Input';
 import styles from './AuthenticationForm.module.sass';
